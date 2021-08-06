@@ -1,0 +1,66 @@
+1. Write a program that allocates array of 20 integers and initializes each element by its index multiplied by 5. 
+	Print the obtained array on the console.
+2. Write a program that reads two arrays from the console and compares them element by element.
+3. Write a program that compares two char arrays lexicographically (letter by letter).
+4. Write a program that finds the maximal sequence of equal elements in an array.   
+	Example: {2, 1, 1, 2, 3, 3, 2, 2, 2, 1} ? {2, 2, 2}.
+5. Write a program that finds the maximal increasing sequence in an array. 
+	Example: {3, 2, 3, 4, 2, 2, 4} ? {2, 3, 4}.
+6. Write a program that reads two integer numbers N and K and an array of N elements from the console. 
+	Find in the array those K elements that have maximal sum.
+7. Sorting an array means to arrange its elements in increasing order. Write a program to sort an array. 
+	Use the "selection sort" algorithm. Hint: Search on Google.
+8. Write a program that finds the sequence of maximal sum in given array. 
+	Example: {2, 3, -6, -1, 2, -1, 6, 4, -8, 8} ? {2, -1, 6, 4}
+	Can you do it with only one loop (with single scan through the elements of the array)?
+9. Write a program that finds the most frequent number in an array. 
+	Example: {4, 1, 1, 4, 2, 3, 4, 4, 1, 2, 4, 9, 3} -> 4 (5 times)
+10. Write a program that finds in given array of integers a sequence of given sum S (if present). 
+	Example: {4, 3, 1, 4, 2, 5, 8}, S=11 ? {4, 2, 5}	
+11. Write a program that finds the index of given element in a sorted array of integers by using the 
+	binary search algorithm (find it in Wikipedia).
+12. Write a program that creates an array containing all letters from the alphabet (A-Z). 
+	Read a word from the console and print the index of each of its letters in the array.
+13. Write a program that sorts an array of strings using the quick sort algorithm. Search on Google.
+14. Write a program that finds all prime numbers in the range [1...10 000 000]. 
+	Use the sieve of Eratosthenes algorithm (find it in Wikipedia).
+15.* We are given an array of integers and a number S. Write a program to find if there exists a 
+	subset of the elements of the array that has a sum S. 
+	Example: arr={2, 1, 2, 4, 3, 5, 2, 6}, S=14 ? yes (1+2+5+6)
+16. * Kamino Factory
+ 	The clone factory in Kamino got another order to clone troops.But this time you are tasked to find the best DNA
+	sequence to use in the production.
+	You will receive the DNA length and until you receive the command "Clone them!" you will be receiving a DNA
+	sequences of ones and zeroes, split by "!" (one or several).
+	You should select the sequence with the longest subsequence of ones.If there are several sequences with same
+	length of subsequence of ones, print the one with the leftmost starting index, if there are several sequences with
+	same length and starting index, select the sequence with the greater sum of its elements.
+	After you receive the last command "Clone them!" you should print the collected information in the following
+	format:
+	"Best DNA sample {bestSequenceIndex} with sum: {bestSequenceSum}."
+	"{DNA sequence, joined by space}"
+
+	Input / Constraints
+	- The first line holds the length of the sequences – integer in range[1…100];
+	- On the next lines until you receive "Clone them!" you will be receiving sequences(at least one) of ones and
+	  zeroes, split by "!" (one or several).
+
+	Output
+	The output should be printed on the console and consists of two lines in the following format:
+	"Best DNA sample { bestSequenceIndex} with sum: {bestSequenceSum}"
+	"{DNA sequence, joined by space}"
+
+	Examples
+	Input           Output                              Comments
+	5               Best DNA sample 2 with sum: 2.      We receive 2 sequences with same length of
+	1!0!1!1!0       0 1 1 0 0                           subsequence of ones, but the second is printed,
+	0!1!1!0!0                                           because its subsequence starts at index[1].
+	Clone them!
+
+	Input           Output                              Comments
+	4               Best DNA sample 1 with sum: 3.      We receive 3 sequences.Both 1 and 3 have same
+	1!1!0!1         1 1 0 1                             length of subsequence of ones - &gt; 2, and both start
+	1!0!0!1                                             from index[0], but the first is printed, because its sum
+	1!1!0!0                                             is greater.
+	Clone them!
+

@@ -1,0 +1,226 @@
+Problem 1. Counter Strike
+	Write a program that keeps track of every won battle against an enemy.You will receive initial energy.
+	Afterwards you will start receiving the distance you need to go to reach an enemy until the "End 
+	of battle" command is given, or until you run out of energy.
+	The energy you need for reaching an enemy is equal to the distance you receive. Each time you reach 
+	an enemy, your energy is reduced.This is considered a successful battle (win). If you don't have 
+	enough energy to reach an the enemy, print:
+	"Not enough energy! Game ends with {count} won battles and {energy} energy"
+	and end the program.
+	Every third won battle increases your energy with the value of your current count of won battles.
+	Upon receiving the "End of battle" command, print the count of won battles in the following format:
+	"Won battles: {count}. Energy left: {energy}" 
+
+	Input / Constraints
+	•	On the first line you will receive initial energy – an integer [1-10000].
+	•	On the next lines, you will be receiving distance of the enemy – an integer [1-10000]
+
+	Output
+	•	The description contains the proper output messages for each case and the format in which they
+	should be print.
+
+	Example 1
+	Input       Output                      Comments
+	100         Not enough energy! Game     Initial energy is 100. The first distance 
+	10          ends with 7 won battles     is 10, so we subtract 10 from 100 and we  
+	10          and 0 energy                consider this a won battle.We are left
+	10                                      with 90 energy.Next distance – 10, and 80
+	1                                       energy left.
+	2                                       Next distance – 10, 3 won battles and 70 
+	3                                       energy, but since we have 3 won battles,
+	73                                      we increase the energy with the current 
+	10	                                    count of won battle, in this case – 3 and 
+	                                        it becomes 73.
+	                                        The last distance we receive – 10 is 
+	                                        unreachalble since we have 0 energy, so we 
+	                                        print the appropriate message and the 
+	                                        program ends.
+	Example 2
+	Input       Output                      Comments
+	200         Won battles: 4. Energy 
+	54          left: 94
+	14
+	28
+	13
+	End of battle
+
+
+Problem 2. Shoot for the Win
+	Write a program that helps you keep track of your shot targets.You will receive a sequence with integers, separated 
+	by single space, representing targets and their value.Afterwards, you will be receiving indices until the "End" 
+	command is given and you need to print the targets and the count of shot targets.
+	Every time you receive an index, you need to shoot the target on that index, if it is possiblie.
+	Everytime you shoot a target, its value becomes -1 and it is considered shot. Along with that you also need to:
+	•	Reduce all the other targets, which have greater values than your current target, with its value.
+	•	All the targets, which have less than or equal value to the shot target, you need to increase with its value.
+	Keep in mind that you can't shoot a target, which is already shot. You also can't increase or reduce a target, which
+	is considered shot.
+	When you receive the "End" command, print the targets in their current state and the count of shot targets in the 
+    	following format:
+	"Shot targets: {count} -> {target1} {target2}… {targetn}"
+
+	Input / Constraints
+	•	On the first line of input you will receive a sequence of integers, separated by a single space – the targets 
+	    	sequence.
+	•	On the next lines, until the "End" command you be receiving integers each on a single line – the index of 
+    		the target to be shot.
+	Output
+
+	•	The format of the output is described above in the problem description.
+
+	Example 1
+	Input               Output                      Comments
+	24 50 36 70         Shot targets 3 -> -1        First we shoot target on index 
+	0                   -1 130 -1                   0. It becomes equal to -1 and 
+	4                                               we start going through the rest
+	3                                               of the targets.Since 50 is
+	1                                               more than 24, we reduce it to 
+	End                                             26 and 36 to 12 and 70 to 46.                                       
+	                                                The sequence looks like that:
+	                                                -1 26 12 46
+ 	                                                The next index is invalid, so 
+	                                                we don't do anything. Index 3 
+ 	                                                is valid and after the 
+	                                                operations our sequence should 
+	                                                look like that:
+ 	                                                -1 72 58 -1
+	                                                Then we take the first index 
+	                                                with value 72 and our sequence 
+	                                                looks like that:
+	                                                -1 -1 130 -1
+	                                                Then we print the result after 
+	                                                the "End" command.
+	Example 2
+	Input               Output                      Comments
+	30 30 12 60 54 66   Shot targets: 4 -> -1 
+	5                   120 -1 66 -1 -1
+	2
+	4
+	0
+	End
+
+
+Problem 3. Moving Target
+	You are at the shooting gallery again and you need a program that helps you keep track of moving targets.On the first
+	line, you will receive a sequence of targets with their integer values, split by a single space.Then, you will start 
+	receiving commands for manipulating the targets, until the "End" command.The commands are the following:
+	    •	Shoot { index} {power}
+	        o   Shoot the target at the index, if it exists by reducing its value by the given power (integer value).A 
+	            target is considered shot when its value reaches 0.
+	        o   Remove the target, if it is shot.
+	    •	Add {index} { value}
+	        o   Insert a target with the received value at the received index, if it exist. If not, print: "Invalid 
+	            placement!"
+	    •	Strike  { index} { radius}
+	        o   Remove the target at the given index and the ones before and after it depending on the radius, if such 
+	            exist. If any of the indices in the range is invalid print:
+	            "Strike missed!" and skip this command.
+
+	Example:  Strike 2 2
+	{ radius} { radius} { strikeIndex} { radius} { radius}
+	
+	    •	End
+	        o   Print the sequence with targets in the following format:
+	            { target1}|{ target2}…|{ targetn}
+
+	Input / Constraints
+	    •	On the first line you will receive the sequence of targets – integer values [1-10000].
+	    •	On the next lines, until the "End" will be receiving the command described above – strings.
+	    •	There will never be a case when "Strike" command would empty the whole sequence.
+
+	Output
+	    •	Print the appropriate message in case of "Strike" command if necessary.
+	    •	In the end, print the sequence of targets in the format described above.
+
+	Example 1
+	Input                   Output                      Comments
+	52 74 23 44 96 110      Invalid placement!          The first command is "Shoot", so we 
+	Shoot 5 10              52|100                      reduce the target on index 5, which is 
+	Shoot 1 80                                          valid, with the given power – 10. 
+	Strike 2 1                                          Then we receive the same command but 
+	Add 22 3                                            we need to reduce the target on the 1st 
+	End                                                 index, with power 80. The value of this 
+	                                                    target is 74, so it is considered shot 
+		                                            and we remove it. 
+	                                                    Then we receive the "Strike" command 
+	                                                    on the 2nd index and we need to 
+	                                                    check if the range with radius 1 is valid:
+	                                                    52 23 44 96 100
+	                                                    And it is, so we remove the targets.
+	                                                    At last we receive the "Add" command, 
+	                                                    but the index is invalid so we print 
+	                                                    the appropriate message and in the end 
+	                                                    we have the following result:
+	                                                    52|100
+	Example 2
+	Input                   Output                      Comments
+	47 55 85 78 99 20       Strike missed!
+	Shoot 1 55              22|47|50|40|85|78|99|20
+	Shoot 8 15
+	Strike 2 3
+	Add 0 22
+	Add 2 40
+	Add 2 50
+	End 
+
+
+Problem 3.Heart Delivery
+	Valentine’s Day is coming, and Cupid has very limited time to spread some love across the neighborhood.
+	Help him with his mission!
+
+	You will receive a string with even integers, separated by a "@".This is our neighborhood. After that a series of 
+	Jump commands will follow, until you receive "Love!" Every house in the neighborhood needs a certain number of 
+	hearts delivered by Cupid, in order to be able to celebrate Valentine’s Day. Those needed hearts are indicated by 
+	the integers in the neighborhood.
+	Cupid starts at the position of the first house(index 0) and must jump by a given length.The jump commands will 
+	be in this format: "Jump {length}".
+	Every time he jumps from one house to another, the needed hearts for the visited house are decreased by 2.If the 
+	needed hearts for a certain house become equal to 0, print on the console "Place {houseIndex} has " +
+	"Valentine's day." If Cupid jumps to a house where the needed hearts are already 0, print on the console 
+	"Place {houseIndex} already had Valentine's day.".
+	Keep in mind that Cupid can have a bigger jump length than the size of the neighborhood and if he does jump 
+	outside of it, he should start from the first house again. 
+
+	For example, we are given this neighborhood: 6@6@6.Cupid is at the start and jumps with a length of 2.He will end 
+	up at index 2 and decrease the needed hearts there by 2: [6, 6, 4]. Next he jumps again with a length of 2 and goes
+	outside the neighborhood, so he goes back to the first house(index 0) and again decreases the needed hearts there:
+	[4, 6, 4].
+
+	Input
+	•	On the first line you will receive a string with even integers separated by "@" – the neighborhood and the 
+		number of hearts for each house.
+	•	On the next lines, until "Love!" is received, you will be getting jump commands in this format: "Jump " +
+		"{length}".
+
+	Output
+	At the end print Cupid's last position and whether his mission was successful or not:
+	•	"Cupid's last position was {lastPositionIndex}."
+	•	If each house has had a Valentine's day, print: 
+		o   "Mission was successful."
+	•	If not, print the count of all houses that didn`t celebrate a Valentine's Day:
+		o   "Cupid has failed {houseCount} places."
+
+	Constraints
+	•	The neighborhood`s size will be in the range[1…20]
+	•	Each house will need an even number of hearts in the range[2 … 10]
+	•	Each jump length will be an integer in the range[1 … 20]
+
+	Example 1
+	Input           Output                              Comments
+	10@10@10@2      Place 3 has Valentine's day.        Jump 1->> [10, 8, 10, 2]
+	Jump 1          Cupid's last position was 3.        Jump 2->> [10, 8, 10, 0] so we print 
+	Jump 2          Cupid has failed 3 places.          "Place 3 has Valentine's day."
+	Love!                                               Next command is "Love!", so we print 
+	                                                    Cupid`s last position and the outcome 
+	                                                    of his mission.
+	Example 2
+	Input           Output                              Comments
+	2@4@2           Place 2 has Valentine's day.
+	Jump 2          Place 0 has Valentine's day.
+	Jump 2          Place 0 already had Valentine's 
+	Jump 8          day.
+	Jump 3          Place 0 already had Valentine's
+	Jump 1          day.
+	Love!           Cupid's last position was 1.
+	                Cupid has failed 1 places.
+
